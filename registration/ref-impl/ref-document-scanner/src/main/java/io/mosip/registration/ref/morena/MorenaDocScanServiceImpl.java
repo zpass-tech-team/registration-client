@@ -28,7 +28,10 @@ public class MorenaDocScanServiceImpl implements DocScannerService {
     }
 
     @Override
-    public BufferedImage scan(DocScanDevice docScanDevice) {
+    public BufferedImage scan(DocScanDevice docScanDevice, String deviceType) {
+        if (deviceType != null) {
+            Configuration.addDeviceType(deviceType, true);
+        }
         Manager manager = Manager.getInstance();
         Optional<Device> result = manager.listDevices().stream()
                 .filter(d -> d.toString().equals(docScanDevice.getName()))
