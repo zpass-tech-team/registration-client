@@ -800,9 +800,9 @@ public class GenericController<uiFieldDTO> extends BaseController {
 			int rowIndex = 0;
 			GridPane gridPane = getScreenGroupGridPane(screenGridPane.getId()+"_col_1", screenGridPane);
 
-			if(screenDTO.isPreRegFetchRequired()) {
-				gridPane.add(getPreRegistrationFetchComponent(), 0, rowIndex++);
-			}
+//			if(screenDTO.isPreRegFetchRequired()) {
+//				gridPane.add(getPreRegistrationFetchComponent(), 0, rowIndex++);
+//			}
 			if(screenDTO.isAdditionalInfoRequestIdRequired()) {
 				additionalInfoReqIdScreenOrder = screenDTO.getOrder();
 				gridPane.add(getAdditionalInfoRequestIdComponent(), 0, rowIndex++);
@@ -840,8 +840,12 @@ public class GenericController<uiFieldDTO> extends BaseController {
 
 						if(screenDTO.getName().equals("DemographicDetails")) {
 							fxControl.getNode().getStyleClass().add(RegistrationConstants.DEMOGRAPHIC_FIELD);
-							groupFlowPane.add( fxControl.getNode(), (fieldIndex % 2), (fieldIndex / 2) + 1);
-							fieldIndex++;
+							if(fxControl.getUiSchemaDTO().getId().equalsIgnoreCase("nrcid")){
+								groupFlowPane.getChildren().add(fxControl.getNode());
+							} else {
+								groupFlowPane.add(fxControl.getNode(), (fieldIndex % 2), (fieldIndex / 2) + 1);
+								fieldIndex++;
+							}
 						} else {
 							if(screenDTO.getName().equals("Documents")) {
 								fxControl.getNode().getStyleClass().add(RegistrationConstants.DOCUMENT_COMBOBOX_FIELD);
@@ -870,7 +874,7 @@ public class GenericController<uiFieldDTO> extends BaseController {
 			screenTab.setContent(scrollPane);
 			tabPane.getTabs().add(screenTab);
 		}
-
+		getRegistrationDTOFromSession().addDemographicField("selectedHandles","nrcId");
 		//Setting the Default Value
 		/*String langCode = getRegistrationDTOFromSession().getSelectedLanguagesByApplicant().get(0);
 		getRegistrationDTOFromSession().addDemographicField("bloodType", Arrays.asList(new SimpleDto(langCode, "A")));
@@ -980,8 +984,10 @@ public class GenericController<uiFieldDTO> extends BaseController {
 
 
 	private FxControl buildFxElement(UiFieldDTO uiFieldDTO) throws Exception {
-		LOGGER.info("Building fxControl for field : {}", uiFieldDTO.getId());
 
+		if(uiFieldDTO.getId().equalsIgnoreCase("selectedHandles")) {
+			LOGGER.info("Building fxControl for field : {}", uiFieldDTO.getId());
+		}
 		FxControl fxControl = null;
 		if (uiFieldDTO.getControlType() != null) {
 			switch (uiFieldDTO.getControlType()) {
