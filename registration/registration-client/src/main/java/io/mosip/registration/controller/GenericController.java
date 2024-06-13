@@ -841,8 +841,9 @@ public class GenericController<uiFieldDTO> extends BaseController {
 						if(screenDTO.getName().equals("DemographicDetails")) {
 							fxControl.getNode().getStyleClass().add(RegistrationConstants.DEMOGRAPHIC_FIELD);
 							if(fxControl.getUiSchemaDTO().getId().equalsIgnoreCase("nrcid")){
-								groupFlowPane.getChildren().add(fxControl.getNode());
-							} else {
+								groupFlowPane.add(fxControl.getNode(), (fieldIndex % 2), (fieldIndex / 2) + 1);
+								fieldIndex+=2;
+							}else {
 								groupFlowPane.add(fxControl.getNode(), (fieldIndex % 2), (fieldIndex / 2) + 1);
 								fieldIndex++;
 							}
