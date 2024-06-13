@@ -986,9 +986,7 @@ public class GenericController<uiFieldDTO> extends BaseController {
 
 	private FxControl buildFxElement(UiFieldDTO uiFieldDTO) throws Exception {
 
-		if(uiFieldDTO.getId().equalsIgnoreCase("selectedHandles")) {
-			LOGGER.info("Building fxControl for field : {}", uiFieldDTO.getId());
-		}
+		LOGGER.info("Building fxControl for field : {}", uiFieldDTO.getId());
 		FxControl fxControl = null;
 		if (uiFieldDTO.getControlType() != null) {
 			switch (uiFieldDTO.getControlType()) {
