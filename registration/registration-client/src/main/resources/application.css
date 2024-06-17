@@ -632,7 +632,7 @@ Working on new Css by taleev
 #loginScreen {
         -fx-background-image: url('/images/generic-background3.jpg');
         -fx-background-size: auto,contain;
-        -fx-background-position: left 100px top 85px;
+        -fx-background-position: left 130px top 125px;
         -fx-background-repeat: no-repeat;
         -fx-background-color:white;
 }
