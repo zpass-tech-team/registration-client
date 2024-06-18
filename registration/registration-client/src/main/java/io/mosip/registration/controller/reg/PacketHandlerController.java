@@ -603,6 +603,9 @@ public class PacketHandlerController extends BaseController implements Initializ
 			LOGGER.error("",  ioException);
 		}
 
+		String nrcid = (String)registrationDTO.getDemographics().get("nrcId");
+		registrationDTO.getDemographics().replace("nrcId",nrcid,nrcid.trim());
+
 		// packet creation
 		ResponseDTO response = packetHandlerService.handle(registrationDTO);
 
