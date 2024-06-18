@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 
 import io.mosip.registration.controller.*;
 import javafx.geometry.Insets;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.*;
 import org.springframework.context.ApplicationContext;
 
