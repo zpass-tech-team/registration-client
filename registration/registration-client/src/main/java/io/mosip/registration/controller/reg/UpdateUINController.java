@@ -221,12 +221,13 @@ public class UpdateUINController extends BaseController implements Initializable
 				}
 			}
 
-			if (selectedFieldGroups.isEmpty()) {
+			if(selectedFieldGroups.isEmpty()) {
 				generateAlert(RegistrationConstants.ERROR, RegistrationUIConstants.getMessageLanguageSpecific(RegistrationUIConstants.UPDATE_UIN_SELECTION_ALERT));
 				return;
 			}
-			if (uinId.getText().matches("^[0-9]{6}[/][0-9]{2}[/][0-9]{1}$")) {
-				getRegistrationDTOFromSession().addDemographicField("nrcId", uinId.getText());
+
+			if (uinValidatorImpl.validateId(uinId.getText()) && !selectedFieldGroups.isEmpty()) {
+				getRegistrationDTOFromSession().addDemographicField("UIN", uinId.getText());
 				getRegistrationDTOFromSession().setUpdatableFieldGroups(selectedFieldGroups);
 				getRegistrationDTOFromSession().setUpdatableFields(new ArrayList<>());
 				getRegistrationDTOFromSession().setBiometricMarkedForUpdate(selectedFieldGroups.contains(RegistrationConstants.BIOMETRICS_GROUP) ? true : false);
@@ -238,8 +239,6 @@ public class UpdateUINController extends BaseController implements Initializable
 				getScene(createRoot).setRoot(createRoot);
 				genericController.populateScreens();
 				return;
-			} else {
-				generateAlert(RegistrationConstants.ERROR, RegistrationUIConstants.getMessageLanguageSpecific(RegistrationUIConstants.UPDATE_NRCID_VALIDATION_ALERT));
 			}
 		} catch (InvalidIDException invalidIdException) {
 			LOGGER.error(invalidIdException.getMessage(), invalidIdException);
