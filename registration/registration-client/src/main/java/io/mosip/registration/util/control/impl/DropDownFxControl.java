@@ -176,7 +176,7 @@ public class DropDownFxControl extends FxControl {
 		field.setId(id);
 		// field.setPrefWidth(prefWidth);
 
-		field.setPromptText(titleText);
+		//field.setPromptText(titleText);
 		field.setDisable(isDisable);
 		field.getStyleClass().add(RegistrationConstants.DEMOGRAPHIC_COMBOBOX);
 		field.setConverter((StringConverter<GenericDto>) uiRenderForComboBox);

@@ -190,7 +190,7 @@ public class Validations extends BaseController {
 		}
 
 		Validator validator = getRegex(fieldId, RegistrationConstants.REGEX_TYPE, langCode);
-		if (validator != null && validator.getValidator() != null && !value.trim().matches(validator.getValidator())) {
+		if (validator != null && validator.getValidator() != null && !value.matches(validator.getValidator())) {
 			String errorMessage = validator.getErrorCode() != null
 					&& messageBundle.containsKey(validator.getErrorCode())
 							? messageBundle.getString(validator.getErrorCode())

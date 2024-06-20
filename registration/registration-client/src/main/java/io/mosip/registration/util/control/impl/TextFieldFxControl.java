@@ -182,7 +182,7 @@ public class TextFieldFxControl extends FxControl {
 					vBox.getChildren().add(createTextBox(langCode,true));
 					vBox.getChildren().add(getLabel(uiFieldDTO.getId() + langCode + RegistrationConstants.MESSAGE, null,
 							RegistrationConstants.DemoGraphicFieldMessageLabel, false, simpleTypeVBox.getPrefWidth()));
-
+					
 					HBox hyperLinkHBox = new HBox();
 					hyperLinkHBox.setVisible(false);
 					hyperLinkHBox.setPrefWidth(simpleTypeVBox.getPrefWidth());
@@ -296,7 +296,7 @@ public class TextFieldFxControl extends FxControl {
 
 	private HBox createTextBox(String langCode, boolean isSimpleType) {
 		HBox textFieldHBox = new HBox();
-		TextField textField = getTextField(langCode, uiFieldDTO.getLabel(),uiFieldDTO.getId() + langCode, false);
+		TextField textField = getTextField(langCode, uiFieldDTO.getId() + langCode, false);
 		textFieldHBox.setHgrow(textField, Priority.ALWAYS);
 		textFieldHBox.getChildren().add(textField);
 
@@ -329,24 +329,16 @@ public class TextFieldFxControl extends FxControl {
 	}
 
 
-	private TextField getTextField(String langCode,Map<String,String> label, String id, boolean isDisable) {
+	private TextField getTextField(String langCode, String id, boolean isDisable) {
 
 		/** Text Field */
 		TextField textField = new TextField();
 		textField.setId(id);
-//		textField.setPromptText(io.mosip.registration.context.ApplicationContext
-//				.getBundle(langCode, RegistrationConstants.LABELS).getString("language"));
-		String key = null;
-		for (Map.Entry<String, String> entry : label.entrySet()) {
-			key = entry.getKey();
-			if (label.get(key).equalsIgnoreCase("Phone Number")) {
-				textField.setPromptText("Enter 9 digit Phone Number.");
-			} else {
-				textField.setPromptText(label.get(key));
-			}
-		}
+		textField.setPromptText(io.mosip.registration.context.ApplicationContext
+				.getBundle(langCode, RegistrationConstants.LABELS).getString("language"));
 		textField.getStyleClass().add(RegistrationConstants.DEMOGRAPHIC_TEXTFIELD);
 		textField.setDisable(isDisable);
+
 		return textField;
 	}
 
