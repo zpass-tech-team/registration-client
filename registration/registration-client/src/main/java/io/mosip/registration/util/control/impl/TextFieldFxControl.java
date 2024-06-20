@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 
 import io.mosip.registration.controller.*;
 import javafx.geometry.Insets;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.*;
 import org.springframework.context.ApplicationContext;
 
@@ -297,7 +296,7 @@ public class TextFieldFxControl extends FxControl {
 
 	private HBox createTextBox(String langCode, boolean isSimpleType) {
 		HBox textFieldHBox = new HBox();
-		TextField textField = getTextField(langCode, uiFieldDTO.getId(),uiFieldDTO.getLabel(),uiFieldDTO.getId() + langCode, false);
+		TextField textField = getTextField(langCode, uiFieldDTO.getLabel(),uiFieldDTO.getId() + langCode, false);
 		textFieldHBox.setHgrow(textField, Priority.ALWAYS);
 		textFieldHBox.getChildren().add(textField);
 
@@ -330,7 +329,7 @@ public class TextFieldFxControl extends FxControl {
 	}
 
 
-	private TextField getTextField(String langCode,String fieldId, Map<String,String> label, String id, boolean isDisable) {
+	private TextField getTextField(String langCode,Map<String,String> label, String id, boolean isDisable) {
 
 		/** Text Field */
 		TextField textField = new TextField();
@@ -340,7 +339,7 @@ public class TextFieldFxControl extends FxControl {
 		String key = null;
 		for (Map.Entry<String, String> entry : label.entrySet()) {
 			key = entry.getKey();
-			if (fieldId.equalsIgnoreCase("phoneNumber")) {
+			if (label.get(key).equalsIgnoreCase("Phone Number")) {
 				textField.setPromptText("Enter 9 digit Phone Number.");
 			} else {
 				textField.setPromptText(label.get(key));
