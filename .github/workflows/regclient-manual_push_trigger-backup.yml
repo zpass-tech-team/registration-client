@@ -1,4 +1,4 @@
-name: Manual push trigger
+name: Manual push trigger backup
 
 on: workflow_dispatch
   
