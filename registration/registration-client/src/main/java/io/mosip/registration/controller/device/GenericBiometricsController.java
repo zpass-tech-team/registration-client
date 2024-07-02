@@ -285,7 +285,7 @@ public class GenericBiometricsController extends BaseController {
 
 		retryBox.setVisible(!isExceptionPhoto(modality));
 		thresholdBox.setVisible(!isExceptionPhoto(modality) && isQualityCheckWithSdkEnabled());
-		GridPane.setMargin(thresholdBox, new Insets(0, 0, isQualityCheckWithSdkEnabled() ? 50 : 0,0));
+//		GridPane.setMargin(thresholdBox, new Insets(0, 0, isQualityCheckWithSdkEnabled() ? 50 : 0,0));
 
 		biometricBox.setVisible(true);
 		biometricType.setText(applicationLabelBundle.getString(modality.name()));
