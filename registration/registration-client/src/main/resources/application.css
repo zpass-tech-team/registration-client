@@ -953,7 +953,8 @@ Working on new Css by taleev
 .demoGraphicFieldLabel {
 	-fx-background-color: #ffffff;
 	-fx-border-width: 0.0;
-	-fx-text-fill: #666666;
+	-fx-font-weight: bold;
+	-fx-text-fill: #000000;
 	-fx-font-size: 1em;
 	-fx-min-width: 6em;
 }
