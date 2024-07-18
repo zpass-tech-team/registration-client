@@ -630,11 +630,9 @@
 Working on new Css by taleev
 */
 #loginScreen {
-        -fx-background-image: url('/images/generic-background3.jpg');
-        -fx-background-size: auto,contain;
-        -fx-background-position: left 130px top 125px;
-        -fx-background-repeat: no-repeat;
-        -fx-background-color:white;
+        -fx-background-image: url('/images/zambia-background-image.jpg');
+        -fx-background-size: cover, auto;
+        -fx-background-position: left top, center;
 }
 .whiteBackground {
     -fx-background-color:white
