@@ -941,20 +941,21 @@ Working on new Css by taleev
 }
 
 .demoGraphicFieldLabelOnType {
-	-fx-background-color: #ffffff;
-	-fx-border-width: 0.0;
-	-fx-text-fill: #22A8C9;
-	-fx-prompt-text-fill: #000000;
-	-fx-font-size: 1em;
+      -fx-background-color: #ffffff;
+      -fx-border-width: 0.0;
+      -fx-font-weight: bold;
+      -fx-text-fill: black;
+      -fx-font-size: 1em;
+      -fx-min-width: 6em;
 }
 
 .demoGraphicFieldLabel {
-	-fx-background-color: #ffffff;
-	-fx-border-width: 0.0;
-	-fx-font-weight: bold;
-	-fx-text-fill: #000000;
-	-fx-font-size: 1em;
-	-fx-min-width: 6em;
+   -fx-background-color: #ffffff;
+   -fx-border-width: 0.0;
+   -fx-font-weight: bold;
+   -fx-text-fill: black;
+   -fx-font-size: 1em;
+   -fx-min-width: 6em;
 }
 
 .bioGraphicFieldLabel {
